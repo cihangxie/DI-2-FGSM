@@ -48,6 +48,10 @@ tf.flags.DEFINE_float(
 tf.flags.DEFINE_float(
     'prob', 0.5, 'probability of using diverse inputs.')
 
+# if momentum = 1, this attack becomes M-DI-2-FGSM
+tf.flags.DEFINE_float(
+    'momentum', 0.0, 'Momentum.')
+
 tf.flags.DEFINE_string(
     'GPU_ID', '0', 'which GPU to use.')
 
@@ -116,6 +120,7 @@ def graph(x, y, i, x_max, x_min, grad):
   eps = 2.0 * FLAGS.max_epsilon / 255.0
   eps_iter = 2.0 / 255.0
   num_classes = 1001
+  momentum = FLAGS.momentum
 
   with slim.arg_scope(inception.inception_v3_arg_scope()):
     logits, end_points = inception.inception_v3(
@@ -128,11 +133,17 @@ def graph(x, y, i, x_max, x_min, grad):
   
   one_hot = tf.one_hot(y, num_classes)
   cross_entropy = tf.losses.softmax_cross_entropy(one_hot, logits)
-  grad = tf.gradients(cross_entropy, x)[0]
-  x = x + eps_iter * tf.sign(grad)
+
+  # compute the gradient info 
+  noise = tf.gradients(cross_entropy, x)[0]
+  noise = noise / tf.reduce_mean(tf.abs(noise), [1,2,3], keep_dims=True)
+  # accumulate the gradient 
+  noise = momentum * grad + noise
+
+  x = x + eps_iter * tf.sign(noise)
   x = tf.clip_by_value(x, x_min, x_max)
   i = tf.add(i, 1)
-  return x, y, i, x_max, x_min, grad
+  return x, y, i, x_max, x_min, noise
 
 
 def stop(x, y, i, x_max, x_min, grad):
@@ -145,10 +156,10 @@ def input_diversity(input_tensor):
   rescaled = tf.image.resize_images(input_tensor, [rnd, rnd], method=tf.image.ResizeMethod.NEAREST_NEIGHBOR)
   h_rem = FLAGS.image_resize - rnd
   w_rem = FLAGS.image_resize - rnd
-  pad_left = tf.random_uniform((), 0, w_rem, dtype=tf.int32)
-  pad_right = w_rem - pad_left
   pad_top = tf.random_uniform((), 0, h_rem, dtype=tf.int32)
   pad_bottom = h_rem - pad_top
+  pad_left = tf.random_uniform((), 0, w_rem, dtype=tf.int32)
+  pad_right = w_rem - pad_left
   padded = tf.pad(rescaled, [[0, 0], [pad_top, pad_bottom], [pad_left, pad_right], [0, 0]], constant_values=0.)
   padded.set_shape((input_tensor.shape[0], FLAGS.image_resize, FLAGS.image_resize, 3))
   return tf.cond(tf.random_uniform(shape=[1])[0] < tf.constant(FLAGS.prob), lambda: padded, lambda: input_tensor)
