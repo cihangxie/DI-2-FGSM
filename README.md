@@ -7,7 +7,7 @@ Method (DI<sup>2</sup>-FGSM), applies random transformations to the input images
 
 
 ## Extension
-To improve the transferability further, we can
+To improve the transferability further, we
 - integrate momentum term into the attack process (https://arxiv.org/abs/1710.06081); 
 - attack multiple networks simultaneously (https://arxiv.org/abs/1611.02770).
 
