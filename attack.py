@@ -17,7 +17,6 @@ from tensorflow.contrib.slim.nets import inception
 
 slim = tf.contrib.slim
 
-import pdb
 tf.flags.DEFINE_string(
     'master', '', 'The address of the TensorFlow master to use.')
 
