@@ -5,7 +5,7 @@ This paper proposed to improve the transferability of adversarial examples by cr
 ![demo](demo.png)
 
 
-## Relationship to other attacks
+## Relationships to other attacks
 
 This attack can be related to other attacks via different parameter settings, as shown below:
 
