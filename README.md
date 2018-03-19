@@ -21,7 +21,7 @@ This attack can be related to other attacks via different parameter settings, as
 If you find this work is useful in your research, please consider citing:
 
     @article{xie2018improving,
-          title={Improving Transferability of Adversarial Examples with Input Diversity},
-          author={Xie, Cihang and Zhang, Zhishuai and Wang, Jianyu and Zhou, Yuyin and Ren, Zhou and Yuille, Alan},
-          year={2018}
+        title={Improving Transferability of Adversarial Examples with Input Diversity},
+        author={Xie, Cihang and Zhang, Zhishuai and Wang, Jianyu and Zhou, Yuyin and Ren, Zhou and Yuille, Alan},
+        year={2018}
     }
