@@ -9,7 +9,7 @@ This paper proposed to improve the transferability of adversarial examples by cr
 
 This attack can be related to other attacks via different parameter settings, as shown below
 
-<img src="https://github.com/cihangxie/DI-2-FGSM/blob/master/relationship.png" width="100" height="100">
+<img src="https://github.com/cihangxie/DI-2-FGSM/blob/master/relationship.png" width="50%" height="50%">
 
 ## Inception_v3 model
 
