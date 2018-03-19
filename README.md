@@ -1,6 +1,7 @@
 # Improving Transferability of Adversarial Examples with Input Diversity
 
-This paper proposed to improve the transferability of adversarial examples by creating diverse input patterns. Instead of only using the original images to generate adversarial examples, our method applies random transformations to the input images at each iteration. The generated adversarial examples are much more transferable than FGSM and I-FGSM, and an example is shown below:
+This paper proposed to improve the transferability of adversarial examples by creating diverse input patterns. Instead of only using the original images to generate adversarial examples, our method, Diverse Input Iterative Fast Gradient Sign
+Method (DI<sup></sup>2-FGSM), applies random transformations to the input images at each iteration. The generated adversarial examples are much more transferable than FGSM and I-FGSM, and an example is shown below:
 
 ![demo](demo.png)
 
