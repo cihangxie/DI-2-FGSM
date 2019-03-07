@@ -33,6 +33,6 @@ If you find this work is useful in your research, please consider citing:
         title={Improving Transferability of Adversarial Examples with Input Diversity},
         author={Xie, Cihang and Zhang, Zhishuai and Wang, Jianyu and Zhou, Yuyin and Ren, Zhou and Yuille, Alan},
         booktitle = {Computer Vision and Pattern Recognition},
-        year={2018},
+        year={2019},
         organization={IEEE}
     }
