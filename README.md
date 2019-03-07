@@ -29,9 +29,10 @@ Different attacks can be related via different parameter settings, as shown belo
 
 If you find this work is useful in your research, please consider citing:
 
-    @article{xie2018improving,
+    @inproceedings{xie2019improving,
         title={Improving Transferability of Adversarial Examples with Input Diversity},
         author={Xie, Cihang and Zhang, Zhishuai and Wang, Jianyu and Zhou, Yuyin and Ren, Zhou and Yuille, Alan},
-        journal={arXiv preprint arXiv:1803.06978},
-        year={2018}
+        booktitle = {Computer Vision and Pattern Recognition},
+        year={2018},
+        organization={IEEE}
     }
