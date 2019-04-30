@@ -25,7 +25,9 @@ Different attacks can be related via different parameter settings, as shown belo
 - http://download.tensorflow.org/models/inception_v3_2016_08_28.tar.gz
 
 ## Acknowledgements
-- For the implementations of random resizing and random padding (https://arxiv.org/abs/1711.01991), the original implementation is available at https://github.com/cihangxie/NIPS2017_adv_challenge_defense. We adopt a more user-friendly re-implementations https://github.com/anishathalye/obfuscated-gradients in this repo.
+
+- For the implementations of random resizing and random padding (https://arxiv.org/abs/1711.01991), the original version is available at https://github.com/cihangxie/NIPS2017_adv_challenge_defense. We adopt a more user-friendly re-implementation https://github.com/anishathalye/obfuscated-gradients in our repo only for releasing purpose.
+
 ## Citing this work
 
 If you find this work is useful in your research, please consider citing:
